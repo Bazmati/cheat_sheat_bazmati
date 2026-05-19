@@ -16,4 +16,4 @@ Bienvenue sur mon **cheat sheet interactif** pour Symfony et Git, conçu pour le
 
 ## 📩 Contact
 - GitHub : [@Bazmati](https://github.com/Bazmati)
-- Email : ton@email.com
+- Email : <a href="mailto:b%61&#115;il&#101;m&#97;&#108;in&#64;&#103;%6d%78%2ef&#114;">E-mail</a>
