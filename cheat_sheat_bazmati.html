@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheat Sheet Symfony & Git</title>
+    <style>
+        :root {
+            --primary: #4a6baf;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.8rem;
+        }
+
+        .section h3 {
+            color: var(--secondary);
+            margin: 20px 0 15px;
+            font-size: 1.4rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--light);
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(74, 107, 175, 0.05);
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+
+        .command {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+            margin: 5px 0;
+            white-space: nowrap;
+            overflow: auto;
+        }
+
+        .workflow {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .workflow h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .workflow code {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .tip {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid var(--success);
+        }
+
+        .tip h4 {
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .command {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📌 Cheat Sheet Symfony & Git</h1>
+            <p>Commandes terminal pour développer, corriger et tester une application Symfony</p>
+        </header>
+
+        <div class="section">
+            <h2>🔹 Git : Gestion du code et des commits</h2>
+
+            <div class="section">
+                <h3>1. Statut et historique</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>git status</code></td>
+                        <td>Affiche l’état des fichiers (modifiés, non suivis, etc.).</td>
+                    </tr>
+                    <tr>
+                        <td><code>git log --oneline</code></td>
+                        <td>Affiche l’historique des commits (version compacte).</td>
+                    </tr>
+                    <tr>
+                        <td><code>git log -p</code></td>
+                        <td>Affiche l’historique avec les différences (diffs).</td>
+                    </tr>
+                    <tr>
+                        <td><code>git show &lt;commit-hash&gt;</code></td>
+                        <td>Affiche les détails d’un commit spécifique.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>2. Manipulation des commits</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>git add &lt;fichier&gt;</code></td>
+                        <td>Ajoute un fichier à l’index (staging).</td>
+                    </tr>
+                    <tr>
+                        <td><code>git add .</code></td>
+                        <td>Ajoute <strong>tous</strong> les fichiers modifiés.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git commit -m "message"</code></td>
+                        <td>Crée un commit avec un message.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git commit --amend</code></td>
+                        <td>Modifie le dernier commit (message ou contenu).</td>
+                    </tr>
+                    <tr>
+                        <td><code>git reset --soft HEAD~1</code></td>
+                        <td>Annule le dernier commit <strong>mais conserve les modifications</strong> dans le working directory.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git reset --hard HEAD</code></td>
+                        <td><strong>⚠️ Supprime toutes les modifications non commitées</strong> et revient au dernier commit.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git reset --hard HEAD~1</code></td>
+                        <td><strong>⚠️ Supprime le dernier commit ET ses modifications</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git clean -fd</code></td>
+                        <td>Supprime <strong>tous les fichiers non suivis</strong> (y compris les dossiers).</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>3. Branches</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>git branch</code></td>
+                        <td>Liste les branches locales.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git branch &lt;nom-branche&gt;</code></td>
+                        <td>Crée une nouvelle branche.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git checkout &lt;nom-branche&gt;</code></td>
+                        <td>Change de branche.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git checkout -b &lt;nom-branche&gt;</code></td>
+                        <td>Crée et bascule sur une nouvelle branche.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git merge &lt;nom-branche&gt;</code></td>
+                        <td>Fusionne une branche dans la branche courante.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git branch -d &lt;nom-branche&gt;</code></td>
+                        <td>Supprime une branche locale.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git push origin --delete &lt;nom-branche&gt;</code></td>
+                        <td>Supprime une branche <strong>distante</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git pull origin &lt;nom-branche&gt;</code></td>
+                        <td>Récupère les changements d’une branche distante.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>4. Collaboration (Remote)</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>git clone &lt;url&gt;</code></td>
+                        <td>Clone un dépôt distant.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git remote -v</code></td>
+                        <td>Affiche les dépôts distants configurés.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git push origin &lt;nom-branche&gt;</code></td>
+                        <td>Pousse une branche vers le dépôt distant.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git pull</code></td>
+                        <td>Récupère et fusionne les changements distants.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git fetch</code></td>
+                        <td>Récupère les changements distants <strong>sans fusionner</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git rebase &lt;nom-branche&gt;</code></td>
+                        <td>Réapplique les commits de la branche courante sur une autre branche.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>5. Résolution de conflits</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>git diff</code></td>
+                        <td>Affiche les différences entre le working directory et l’index.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git diff &lt;commit1&gt; &lt;commit2&gt;</code></td>
+                        <td>Compare deux commits.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git stash</code></td>
+                        <td>Sauvegarde temporairement les modifications non commitées.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git stash pop</code></td>
+                        <td>Récupère les modifications sauvegardées avec <code>stash</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><code>git stash list</code></td>
+                        <td>Liste toutes les sauvegardes <code>stash</code>.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔹 Symfony : Développement et Tests</h2>
+
+            <div class="section">
+                <h3>1. Installation et Mise à jour</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>composer install</code></td>
+                        <td>Installe les dépendances du projet (via <code>composer.lock</code>).</td>
+                    </tr>
+                    <tr>
+                        <td><code>composer update</code></td>
+                        <td>Met à jour les dépendances (modifie <code>composer.lock</code>).</td>
+                    </tr>
+                    <tr>
+                        <td><code>composer require &lt;package&gt;</code></td>
+                        <td>Ajoute une dépendance au projet.</td>
+                    </tr>
+                    <tr>
+                        <td><code>composer remove &lt;package&gt;</code></td>
+                        <td>Supprime une dépendance.</td>
+                    </tr>
+                    <tr>
+                        <td><code>symfony check:requirements</code></td>
+                        <td>Vérifie que l’environnement répond aux exigences de Symfony.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>2. Serveur et Cache</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>symfony serve</code></td>
+                        <td>Lance le serveur de développement local (port 8000 par défaut).</td>
+                    </tr>
+                    <tr>
+                        <td><code>symfony serve -d</code></td>
+                        <td>Lance le serveur en arrière-plan (mode démon).</td>
+                    </tr>
+                    <tr>
+                        <td><code>symfony serve:stop</code></td>
+                        <td>Arrête le serveur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console cache:clear</code></td>
+                        <td><strong>⚠️ Vide le cache</strong> (à utiliser après des modifications de configuration).</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console cache:warmup</code></td>
+                        <td>Préchauffe le cache.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>3. Génération de Code</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:controller &lt;NomController&gt;</code></td>
+                        <td>Crée un nouveau contrôleur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:entity &lt;NomEntity&gt;</code></td>
+                        <td>Crée une nouvelle entité Doctrine.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:form &lt;NomForm&gt;</code></td>
+                        <td>Crée un nouveau formulaire.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:crud &lt;NomEntity&gt;</code></td>
+                        <td>Génère un CRUD complet pour une entité.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:user</code></td>
+                        <td>Crée une entité <code>User</code> avec authentification.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:auth</code></td>
+                        <td>Configure l’authentification (login, registration).</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console make:command &lt;NomCommand&gt;</code></td>
+                        <td>Crée une commande CLI personnalisée.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>4. Base de Données (Doctrine)</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:database:create</code></td>
+                        <td>Crée la base de données.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:schema:update --force</code></td>
+                        <td>Met à jour le schéma de la base de données.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:migrations:diff</code></td>
+                        <td>Génère une migration à partir des entités.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:migrations:migrate</code></td>
+                        <td>Exécute les migrations en attente.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:migrations:execute &lt;nom-migration&gt; --up</code></td>
+                        <td>Exécute une migration spécifique.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console doctrine:fixtures:load</code></td>
+                        <td>Charge les fixtures (données de test).</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>5. Tests</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/phpunit</code></td>
+                        <td>Lance tous les tests unitaires et fonctionnels.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/phpunit --filter &lt;NomTest&gt;</code></td>
+                        <td>Lance un test spécifique.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/phpunit --group &lt;groupe&gt;</code></td>
+                        <td>Lance les tests d’un groupe spécifique.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:test</code></td>
+                        <td>Affiche la liste des tests disponibles.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>6. Debug et Inspection</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:router</code></td>
+                        <td>Affiche toutes les routes de l’application.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:container</code></td>
+                        <td>Liste tous les services du conteneur.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:autowiring</code></td>
+                        <td>Affiche les services disponibles pour l’autowiring.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:config &lt;service&gt;</code></td>
+                        <td>Affiche la configuration d’un service.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console profiler:dump</code></td>
+                        <td>Affiche les dernières requêtes profilées.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>7. Assets et Frontend</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>npm install</code></td>
+                        <td>Installe les dépendances Node.js (si tu utilises Webpack Encore).</td>
+                    </tr>
+                    <tr>
+                        <td><code>npm run dev</code></td>
+                        <td>Compile les assets en mode développement.</td>
+                    </tr>
+                    <tr>
+                        <td><code>npm run build</code></td>
+                        <td>Compile les assets en mode production.</td>
+                    </tr>
+                    <tr>
+                        <td><code>npm run watch</code></td>
+                        <td>Compile les assets automatiquement à chaque modification.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>8. Sécurité</h3>
+                <table>
+                    <tr>
+                        <th>Commande</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console security:check</code></td>
+                        <td>Vérifie les vulnérabilités des dépendances.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:firewall</code></td>
+                        <td>Affiche la configuration des pare-feux.</td>
+                    </tr>
+                    <tr>
+                        <td><code>php bin/console debug:access &lt;route&gt;</code></td>
+                        <td>Vérifie les permissions d’accès à une route.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔹 Workflows Courants</h2>
+
+            <div class="workflow">
+                <h4>1. Corriger une erreur non commité</h4>
+                <div class="command">git reset --hard HEAD  # Supprime toutes les modifications non commitées</div>
+                <div class="command">git clean -fd          # Supprime les fichiers non suivis (optionnel)</div>
+            </div>
+
+            <div class="workflow">
+                <h4>2. Corriger un bug dans une nouvelle branche</h4>
+                <div class="command">git checkout -b fix/nom-du-bug</div>
+                <div class="command"># Faire les corrections...</div>
+                <div class="command">git add .</div>
+                <div class="command">git commit -m "Fix: description du bug"</div>
+                <div class="command">git push origin fix/nom-du-bug</div>
+            </div>
+
+            <div class="workflow">
+                <h4>3. Tester une fonctionnalité</h4>
+                <div class="command">php bin/phpunit --filter NomDuTest</div>
+                <div class="command">php bin/console cache:clear</div>
+                <div class="command">symfony serve</div>
+            </div>
+
+            <div class="workflow">
+                <h4>4. Mettre à jour une dépendance</h4>
+                <div class="command">composer update &lt;package&gt; --with-dependencies</div>
+                <div class="command">php bin/console cache:clear</div>
+            </div>
+
+            <div class="workflow">
+                <h4>5. Déployer en production</h4>
+                <div class="command">composer install --no-dev --optimize-autoloader</div>
+                <div class="command">php bin/console doctrine:migrations:migrate</div>
+                <div class="command">php bin/console cache:clear --env=prod --no-debug</div>
+                <div class="command">npm run build</div>
+            </div>
+        </div>
+
+        <div class="tip">
+            <h4>💡 Astuces</h4>
+            <p><strong>Aliases Git</strong> : Ajoute ces alias dans ton <code>~/.bashrc</code> ou <code>~/.zshrc</code> pour gagner du temps :</p>
+            <div class="command">alias gs="git status"</div>
+            <div class="command">alias ga="git add ."</div>
+            <div class="command">alias gc="git commit -m"</div>
+            <div class="command">alias gp="git push"</div>
+            <div class="command">alias gl="git log --oneline"</div>
+            <div class="command">alias gb="git branch"</div>
+            <div class="command">alias gco="git checkout"</div>
+            <p><strong>Symfony CLI</strong> : Installe <a href="https://symfony.com/download" target="_blank">Symfony CLI</a> pour une meilleure expérience locale.</p>
+            <p><strong>Debug Bar</strong> : Active la barre de debug en développement avec :</p>
+            <div class="command"># config/packages/dev/web_profiler.yaml</div>
+            <div class="command">web_profiler:</div>
+            <div class="command">    toolbar: true</div>
+            <div class="command">    intercept_redirects: false</div>
+        </div>
+
+        <footer>
+            <p>📚 <strong>Ressources Utiles</strong> :
+                <a href="https://symfony.com/doc/current/index.html" target="_blank">Documentation Symfony</a> |
+                <a href="https://git-scm.com/doc" target="_blank">Git Official Docs</a> |
+                <a href="https://www.doctrine-project.org/projects/orm.html" target="_blank">Doctrine ORM</a> |
+                <a href="https://phpunit.readthedocs.io/" target="_blank">PHPUnit</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
