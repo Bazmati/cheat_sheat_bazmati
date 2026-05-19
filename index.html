@@ -184,6 +184,22 @@
             <p>Commandes terminal pour développer, corriger et tester une application Symfony</p>
         </header>
 
+        <div>
+            <input type="text" id="search" placeholder="Rechercher une commande..." style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ddd;">
+        </div>
+            <script>
+                document.getElementById("search").addEventListener("input", function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const commands = document.querySelectorAll("code");
+                    commands.forEach(command => {
+                        if (command.textContent.toLowerCase().includes(searchTerm)) {
+                            command.parentElement.parentElement.style.display = "";
+                        } else {
+                            command.parentElement.parentElement.style.display = "none";
+                        }
+                    });
+                });
+            </script>
         <div class="section">
             <h2>🔹 Git : Gestion du code et des commits</h2>
 
@@ -669,5 +685,6 @@
             </p>
         </footer>
     </div>
+
 </body>
 </html>
