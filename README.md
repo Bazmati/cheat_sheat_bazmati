@@ -2,7 +2,7 @@
 
 Bienvenue sur mon **cheat sheet interactif** pour Symfony et Git, conçu pour les développeurs.
 
-🔗 **Voir la version en ligne** : [https://bazmati.github.io/cheat_sheet_bazmati/](https://bazmati.github.io/cheat_sheet_bazmati/)
+🔗 **Voir la version en ligne** : [https://bazmati.github.io/cheat_sheat_bazmati/](https://bazmati.github.io/cheat_sheat_bazmati/)
 
 ## 📄 Contenu
 - Commandes Git essentielles (commits, branches, résolution de conflits).
